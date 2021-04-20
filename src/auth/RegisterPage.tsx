@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
 import { AuthForm } from './AuthForm';
 import * as Styled from './Auth.styled';
 import { authorize } from '../store/authSlice';
+import { useAppDispatch } from '../utils/hooks';
 
-export const Register = () => {
-  const dispatch = useDispatch();
+export const RegisterPage = () => {
+  const dispatch = useAppDispatch();
 
   const handleSubmit = useCallback(
     (values) => {

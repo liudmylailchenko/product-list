@@ -1,4 +1,3 @@
-import React from 'react';
 import * as yup from 'yup';
 import styled from 'styled-components/macro';
 import { Field, Form, Formik } from 'formik';

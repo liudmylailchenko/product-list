@@ -14,9 +14,16 @@ type TAuthorizedPayload = {
 
 export const authorize = createAsyncThunk<void, TAuthorizedPayload>(
   'auth/authorize',
-  async (payload, {}) => {
-    const result = await apiCall.post(`/api/${payload.type}/`, payload.values);
-    setStorageItem('accessToken', result.data.token);
+  async (payload) => {
+    try {
+      const result = await apiCall.post(
+        `/api/${payload.type}/`,
+        payload.values,
+      );
+      setStorageItem('accessToken', result.data.token);
+    } catch (err) {
+      alert('Something went wrong...');
+    }
   },
 );
 
