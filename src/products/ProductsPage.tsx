@@ -5,7 +5,7 @@ import { ProductItem } from './ProductItem';
 import { useAppSelector } from '../utils/hooks';
 import { Header } from '../components/Header';
 
-const StyledContainer = styled.div`
+const ProductsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
@@ -22,12 +22,12 @@ export const ProductsPage = () => {
         <Typography variant="h2" align="center">
           Products
         </Typography>
-        <StyledContainer>
+        <ProductsContainer>
           {products.list &&
             products.list.map((product: IProduct) => (
               <ProductItem key={product.id} product={product} />
             ))}
-        </StyledContainer>
+        </ProductsContainer>
       </Container>
     </>
   );

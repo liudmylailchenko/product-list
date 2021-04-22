@@ -1,8 +1,8 @@
-import { IReview } from '../store/productsSlice';
-import { formatDates } from '../utils/helpers';
 import styled from 'styled-components/macro';
 import { Typography, Avatar, Paper } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
+import { IReview } from '../store/productsSlice';
+import { formatDates } from '../utils/helpers';
 
 const ReviewContainer = styled(Paper)`
   display: grid;

@@ -18,13 +18,14 @@ type TProps = {
 export const Reviews = ({ reviews, productId }: TProps) => {
   const dispatch = useAppDispatch();
 
+  // Add review and get reviews list because post review API do not response any review info
   const handleAddReview = useCallback(
     (payload) => {
       dispatch(postReviewByProductId(payload)).then(() => {
         dispatch(getReviewsByProductId(productId));
       });
     },
-    [dispatch],
+    [dispatch, productId],
   );
 
   return (
@@ -39,7 +40,7 @@ export const Reviews = ({ reviews, productId }: TProps) => {
 
       {reviews &&
         [...reviews]
-          .reverse()
+          .reverse() // reverse the array to display new reviews first
           .map((review) => <ReviewItem key={review.id} review={review} />)}
     </div>
   );

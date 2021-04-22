@@ -1,8 +1,14 @@
-import { useParams } from 'react-router-dom';
-import { Container, Typography, Paper } from '@material-ui/core';
-import { useAppDispatch, useAppSelector } from '../utils/hooks';
-import styled from 'styled-components/macro';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import {
+  Container,
+  Typography,
+  Paper,
+  Backdrop,
+  CircularProgress,
+} from '@material-ui/core';
+import styled from 'styled-components/macro';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import { getReviewsByProductId, IProduct } from '../store/productsSlice';
 import { Reviews } from './Reviews';
 import { Header } from '../components/Header';
@@ -49,6 +55,9 @@ export const ProductDetailsPage = () => {
 
   return (
     <Wrapper>
+      <Backdrop style={{ zIndex: 10000000 }} open={products.loading}>
+        <CircularProgress color="primary" />
+      </Backdrop>
       <Header />
       <Container maxWidth="md">
         <ProductDetailsWrapper elevation={3}>

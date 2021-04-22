@@ -1,6 +1,6 @@
+import { useCallback } from 'react';
 import { Rating, RatingProps } from '@material-ui/lab';
 import { FieldProps } from 'formik';
-import React, { useCallback } from 'react';
 
 type TProps = FieldProps & RatingProps;
 

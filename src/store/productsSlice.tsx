@@ -91,6 +91,7 @@ const productsSlice = createSlice({
     },
     [`${getReviewsByProductId.fulfilled}`]: (state, { payload }) => {
       state.loading = false;
+      // Save reviews in store with product id
       state.reviews[payload[0].product] = payload;
     },
     [`${getReviewsByProductId.rejected}`]: (state) => {

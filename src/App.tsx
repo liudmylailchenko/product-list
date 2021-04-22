@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { LoginPage } from './auth/LoginPage';
 import { RegisterPage } from './auth/RegisterPage';
 import { ProductsPage } from './products/ProductsPage';
 import { ProductDetailsPage } from './productDetails/ProductDetailsPage';
 import { ROUTES } from './constants/routes';
-import { useAppDispatch } from './utils/hooks';
+import { useAppDispatch, useAppSelector } from './utils/hooks';
 import { getProducts } from './store/productsSlice';
-import { getStorageItem } from './utils/storage';
 
 function App() {
   const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => state.products);
 
+  // Get a list of products so that it is available on any page
   useEffect(() => {
-    dispatch(getProducts());
-  });
+    if (!products.list.length) {
+      dispatch(getProducts());
+    }
+  }, [dispatch, products.list.length]);
 
   return (
     <div className="App">

@@ -23,6 +23,7 @@ export const Header = () => {
           <Button
             color="inherit"
             onClick={() => {
+              // deleting token from storage and reload page for clear redux store
               clearStorage();
               window.location.reload();
             }}

@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { Container, Typography } from '@material-ui/core';
 
+// Styles for login and register pages
 export const Wrapper = styled(Container)`
   display: flex;
   margin-top: 200px;
