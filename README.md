@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-This app is deployed to Netlify ([Demo Link](https://product-list-test.netlify.app//))
+This app is deployed to Netlify ([Demo Link](https://product-list-test.netlify.app/))
 
 ## Notes
 
