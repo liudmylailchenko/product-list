@@ -21,6 +21,11 @@ export interface IReview {
   text: string;
 }
 
+export interface INewReview {
+  productId: number;
+  review: Partial<IReview>;
+}
+
 export const getProducts = createAsyncThunk<Array<IProduct>>(
   'products/getProducts',
   async () => {
@@ -32,26 +37,6 @@ export const getProducts = createAsyncThunk<Array<IProduct>>(
     }
   },
 );
-
-// export const getProductById = createAsyncThunk<
-//   IProduct,
-//   any,
-//   { state: RootState }
-// >('products/getProductById', async (productId, thunkApi) => {
-//   try {
-//     const state = thunkApi.getState();
-//     const product = state.products.list.find((item) => item.id === productId);
-
-//     if (!product) {
-//       const result = await apiCall.get('/api/products/');
-//       return result.data.find((product: IProduct) => product.id === productId);
-//     }
-
-//     return product;
-//   } catch (err) {
-//     alert('Something went wrong...');
-//   }
-// });
 
 export const getReviewsByProductId = createAsyncThunk<Array<IReview>, number>(
   'products/getReviewsByProductId',
@@ -65,16 +50,16 @@ export const getReviewsByProductId = createAsyncThunk<Array<IReview>, number>(
   },
 );
 
-// export const postReviewByProductId = createAsyncThunk(
-//   'products/postReviewByProductId',
-//   async (productId, review) => {
-//     try {
-//       await apiCall.post(`/api/reviews/${productId}`, review);
-//     } catch (err) {
-//       alert('Something went wrong...');
-//     }
-//   },
-// );
+export const postReviewByProductId = createAsyncThunk(
+  'products/postReviewByProductId',
+  async (payload: INewReview) => {
+    try {
+      await apiCall.post(`/api/reviews/${payload.productId}`, payload.review);
+    } catch (err) {
+      alert('Something went wrong...');
+    }
+  },
+);
 
 type SliceState = {
   list: IProduct[];

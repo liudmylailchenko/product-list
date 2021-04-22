@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ROUTES } from '../constants/routes';
 import { apiCall } from '../utils/apiCall';
+import { history } from '../utils/history';
 import { setStorageItem } from '../utils/storage';
 
 export interface IAuthFormValues {
@@ -20,9 +22,14 @@ export const authorize = createAsyncThunk<void, TAuthorizedPayload>(
         `/api/${payload.type}/`,
         payload.values,
       );
+
+      if (!result.data.success) {
+        throw new Error(result.data.message);
+      }
       setStorageItem('accessToken', result.data.token);
+      history.push(ROUTES.PRODUCTS);
     } catch (err) {
-      alert('Something went wrong...');
+      alert(err || 'Something went wrong...');
     }
   },
 );
@@ -35,7 +42,7 @@ const authSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
-    [`${authorize.pending}`]: (state, action) => {
+    [`${authorize.pending}`]: (state) => {
       state.loading = true;
     },
     [`${authorize.fulfilled}`]: (state) => {

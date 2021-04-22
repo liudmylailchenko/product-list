@@ -1,13 +1,18 @@
 import {
+  Card,
   CardActionArea,
   CardContent,
   CardMedia,
   Typography,
 } from '@material-ui/core';
+import styled from 'styled-components/macro';
 import { IProduct } from '../store/productsSlice';
-import * as Styled from './Products.styled';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
+
+const ProductContainer = styled(Card)`
+  max-width: 300px;
+`;
 
 type TProps = {
   product: IProduct;
@@ -15,7 +20,7 @@ type TProps = {
 
 export const ProductItem = ({ product }: TProps) => {
   return (
-    <Styled.ProductContainer>
+    <ProductContainer>
       <CardActionArea component={Link} to={ROUTES.PRODUCT_DETAILS(product.id)}>
         <CardMedia
           component="img"
@@ -30,6 +35,6 @@ export const ProductItem = ({ product }: TProps) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Styled.ProductContainer>
+    </ProductContainer>
   );
 };

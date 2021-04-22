@@ -8,7 +8,7 @@ export const apiCall = axios.create({
 });
 
 apiCall.interceptors.request.use((config) => {
-  const token = getStorageItem('access_token');
+  const token = getStorageItem('accessToken');
   return token
     ? {
         ...config,
