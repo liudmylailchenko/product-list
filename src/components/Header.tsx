@@ -1,4 +1,10 @@
-import { Button, Typography, Toolbar, AppBar } from '@material-ui/core';
+import {
+  Button,
+  Typography,
+  Toolbar,
+  AppBar,
+  Link as MuiLink,
+} from '@material-ui/core';
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
@@ -18,7 +24,16 @@ export const Header = () => {
   return (
     <HeaderContainer position="static">
       <ToolContainer>
-        <Typography variant="h5">Products</Typography>
+        <Typography variant="h5">
+          <MuiLink
+            color="inherit"
+            underline="none"
+            component={Link}
+            to={ROUTES.PRODUCTS}
+          >
+            Products
+          </MuiLink>
+        </Typography>
         {isAuthorized() ? (
           <Button
             color="inherit"
