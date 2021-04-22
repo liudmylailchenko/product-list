@@ -19,6 +19,7 @@ const Wrapper = styled.div`
 
 const ProductDetailsWrapper = styled(Paper)`
   padding: 20px;
+  min-height: 90vh;
 `;
 
 const ProductInfoContainer = styled(Paper)`
@@ -39,6 +40,11 @@ const ImageContainer = styled.div`
   }
 `;
 
+const StyledBackdrop = styled(Backdrop)`
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 10000000000000;
+`;
+
 export const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
   const numProductId = +productId;
@@ -55,9 +61,9 @@ export const ProductDetailsPage = () => {
 
   return (
     <Wrapper>
-      <Backdrop style={{ zIndex: 10000000 }} open={products.loading}>
+      <StyledBackdrop open={products.loading}>
         <CircularProgress color="primary" />
-      </Backdrop>
+      </StyledBackdrop>
       <Header />
       <Container maxWidth="md">
         <ProductDetailsWrapper elevation={3}>
