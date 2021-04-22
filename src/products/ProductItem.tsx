@@ -27,7 +27,7 @@ export const ProductItem = ({ product }: TProps) => {
           alt="Contemplative Reptile"
           height="140"
           title={product.img}
-          image={`http://placehold.it/300x200?text=${product.img}`}
+          image={`https://placehold.co/300x200?text=${product.img}`}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">

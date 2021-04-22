@@ -75,7 +75,7 @@ export const ProductDetailsPage = () => {
                   <img
                     alt="Contemplative Reptile"
                     title={selectedProduct.img}
-                    src={`http://placehold.it/500x400?text=${selectedProduct.img}`}
+                    src={`https://placehold.co/500x400?text=${selectedProduct.img}`}
                   />
                 </ImageContainer>
                 <div>
